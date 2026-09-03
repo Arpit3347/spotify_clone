@@ -1,0 +1,241 @@
+<html lang="en"><head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>"Spotify- WebPlayer"</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="Utility.css">
+
+    </head>
+    <body>
+
+        <div class="ambient-bg"> </div>
+
+        <div class="container bg-black flex">
+
+            <!-- Working on Left Side -->
+            <div class="left  rounded">
+
+                <!-- LEFT HOME AND SEARCH -->
+                <div class="home   rounded m-1 p-1">
+
+                    <div class="close">
+                        <img width="40px" class="invert" src="close.svg"
+                            alt="close-image">
+                    </div>
+
+                    <div class="logo"><img class="invert" src="logo.svg"
+                            alt="spotifylogo">Spotify</div>
+
+                    <ul>
+                        <li><img class="invert" src="home.svg"
+                                alt="homeicon">
+                            Home</li>
+                        <li><img class="invert" src="search.svg"
+                                alt="searchicon"> Search</li>
+
+                    </ul>
+
+                </div>
+
+                <!-- LEFT LIBRARY -->
+                <div class="library bg-gray rounded m-1 p-1">
+                    <div class="heading"><h2>Your Library</h2></div>
+
+                    <div class="songlist">
+                        <ul>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- WORKING ON RIGHT SIDE START -->
+            <div class="right bg-gray m3   rounded  ">
+
+                <!-- RIGHT HEADER TOP -->
+                <div class="header  bg-header ">
+                    <div class="navbar ">
+
+                        <img class="invert hamburger" src="hamburger.svg"
+                            alt="hamburger">
+
+                        <img class=" arrow  invert"
+                            src="https://cdn-icons-png.flaticon.com/128/271/271220.png"
+                            loading="lazy" alt="Left arrow "
+                            title="Left arrow "
+                            width="64" height="64">
+
+                        <img class=" arrow invert"
+                            src="https://cdn-icons-png.flaticon.com/128/271/271228.png"
+                            loading="lazy" alt="Right arrow "
+                            title="Right arrow " width="64" height="64">
+
+                    </div>
+                </div>
+
+                <!-- RIGHT FIRST:  PLAYLIST -->
+
+                <div class="EntirePlaylists ">
+                    <div class="spotifyPlaylist">
+                        <h1>Spotify</h1>
+
+                        <!-- all these below html contain a radio svg done by chatgpt -->
+                        <div class="radio-container">
+
+                            <svg class="radio-svg" viewBox="0 0 300 300"
+                                xmlns="http://www.w3.org/2000/svg">
+
+                                <!-- Outer ring -->
+                                <circle cx="150" cy="150" r="135"
+                                    fill="none"
+                                    stroke="url(#radioGradient)"
+                                    stroke-width="6" />
+
+                                <!-- Radio / vinyl body -->
+                                <circle cx="150" cy="150" r="115"
+                                    fill="#111"
+                                    stroke="#333"
+                                    stroke-width="3" />
+
+                                <!-- Vinyl grooves -->
+                                <circle cx="150" cy="150" r="100"
+                                    fill="none"
+                                    stroke="#292929"
+                                    stroke-width="2" />
+
+                                <circle cx="150" cy="150" r="88"
+                                    fill="none"
+                                    stroke="#292929"
+                                    stroke-width="2" />
+
+                                <circle cx="150" cy="150" r="76"
+                                    fill="none"
+                                    stroke="#292929"
+                                    stroke-width="2" />
+
+                                <!-- CENTER SONG IMAGE -->
+
+                                <image
+                                    id="radioSongImage"
+                                    href="backgrounds/default.jpg"
+                                    x="105"
+                                    y="105"
+                                    width="90"
+                                    height="90"
+                                    preserveAspectRatio="xMidYMid slice"
+                                    clip-path="url(#songImageClip)" />
+
+                                <!-- White border around song image -->
+                                <circle cx="150" cy="150" r="45"
+                                    fill="none"
+                                    stroke="white"
+                                    stroke-width="3" />
+
+                                <!-- Center hole -->
+                                <circle cx="150" cy="150" r="5"
+                                    fill="white" />
+
+                                <!-- Left sound wave -->
+                                <path d="M45 125 Q25 150 45 175"
+                                    fill="none"
+                                    stroke="#1ed760"
+                                    stroke-width="5"
+                                    stroke-linecap="round" />
+
+                                <!-- Right sound wave -->
+                                <path d="M255 125 Q275 150 255 175"
+                                    fill="none"
+                                    stroke="#b84cff"
+                                    stroke-width="5"
+                                    stroke-linecap="round" />
+
+                                <!-- Gradient -->
+
+                                <defs>
+
+                                    <clippath id="songImageClip">
+                                        <circle cx="150" cy="150" r="45" />
+                                    </clippath>
+
+                                    <lineargradient
+                                        id="radioGradient"
+                                        x1="0%"
+                                        y1="0%"
+                                        x2="100%"
+                                        y2="100%">
+
+                                        <stop offset="0%"
+                                            stop-color="#1ed760" />
+                                        <stop offset="50%"
+                                            stop-color="#00c6ff" />
+                                        <stop offset="100%"
+                                            stop-color="#b84cff" />
+
+                                    </lineargradient>
+
+                                </defs>
+
+                            </svg>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Entire Playlist final div  is below -->
+                </div>
+
+                <div class="Player invert">
+
+                    <div class="startbutton">
+
+                        <div class="allbtn">
+                            <img class="backmusic" src="backplay.svg"
+                                alt="backplay">
+                            <img class="playmusic" src="playmusic.svg"
+                                alt="playbutton">
+                            <img class="nextmusic" src="nextplay.svg"
+                                alt="nextplay">
+
+                        </div>
+
+                        <div class="volume">
+
+                            <div class="range">
+
+                                <img src="volume.svg"
+                                    alt="volume-button">
+
+                                <input type="range"
+                                    placeholder="volume"
+                                    min="0"
+                                    max="100" value="100">
+                            </div>
+
+                        </div>
+
+                        <div class="songinfo invert"> <div
+                                class="actualname "></div> </div>
+
+                        <div class="seekbar">
+
+                            <div class="circle"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- below is Player final div -->
+            </div>
+
+            <!-- right side final div  is below  -->
+        </div>
+
+        <!-- //complete page container final div -->
+    </div>
+
+    <script src="js/index.js"></script>
+
+</body></html>

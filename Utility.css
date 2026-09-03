@@ -1,0 +1,108 @@
+/* Utility classes are the classes which we can use on any element , this flex method we can use on any element to make it flex */
+
+
+.flex {
+    display: flex;
+
+}
+
+
+
+
+.item-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.bg-black {
+    background-color: black;
+    color: white;
+}
+
+.bg-gray {
+    background-color: #121212;
+}
+
+.invert {
+    filter: invert(1);
+}
+
+.m-1 {
+    margin: 12px;
+}
+
+.m-2 {
+    margin: 6px;
+}
+
+.rounded {
+    border-radius: 12px;
+}
+
+.border {
+    border: 3px solid red;
+}
+
+.p-1 {
+    padding: 15px;
+}
+
+
+.bg-list {
+    background-color: #1f1f1f;
+    color: white;
+}
+
+.m-3 {
+    margin: 20px 0px;
+}
+
+.bg-header {
+    background-color: #1c1919;
+}
+
+
+
+/* Making scroll bar of EntirePlaylists div to a dark colored and concise one  below 5 line code is taken from chatgpt */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 10px;
+}
+
+
+
+
+
+/* Adding a ambient background to whole page that changes when play back next or song button clicked */
+.ambient-bg {
+    position: fixed;
+
+    /* inset =0 means top,bottom,left,right = 0 */
+    inset: 0;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    opacity: 0;
+
+    /* bluring the background */
+    filter: blur(50px);
+
+
+    /* position fixing of background image  */
+    transform: scale(1.1);
+
+
+    /* zindex =-2 put background at behind of everything */
+    z-index: 0;
+
+    transition: opacity 0.8s ease;
+}

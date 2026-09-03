@@ -1,0 +1,13 @@
+    *Target : =  FULL AI WEB DEV + LITTLE DSA
+
+
+
+(1.) js, node.js , mongodb , sql , express , react = 2-3 full end project with AI integration
+
+(2.) practice projects like portfolio
+                            clones
+                            utility app
+
+(3.) AI models like LLM etc.
+
+(4.) DSA (Arrays , String , HashMap , Stack/queue , Binary Search , Tree, Two pointer  )

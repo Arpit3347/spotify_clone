@@ -1,0 +1,515 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: black;
+    color: white;
+}
+
+
+
+.container {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+
+
+
+
+}
+
+
+
+
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    position: relative;
+    left: 10px;
+    top: 5px;
+}
+
+
+.home ul li {
+    list-style: none;
+    width: 20px;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    gap: 5px;
+}
+
+.home {
+    position: relative;
+}
+
+
+
+.left {
+
+
+
+    /* all these width , max width and other things below setted to make website responsiveve to mobile , laptop tablet etc  */
+
+    width: 25vw;
+    min-width: 250px;
+    max-width: 400px;
+
+    display: flex;
+    flex-direction: column;
+
+    height: 100vh;
+    box-sizing: border-box;
+
+
+}
+
+.right {
+
+    width: 100%;
+    height: 100vh;
+    min-width: 0;
+    overflow: hidden;
+
+    /* position relative and all these transition  properties used to make ambient background appear when song clicks next play or back button  */
+    position: relative;
+    background-color: #121212;
+    transition: background-color 0.8s ease;
+
+
+}
+
+
+/* normally right side has bg-gray but when ambient background is active then background-color :transparent */
+.right.ambient-active {
+    background-color: transparent;
+}
+
+
+.heading {
+    font-size: 13px;
+
+}
+
+.library {
+
+
+
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+
+
+.right .header {
+    height: 60px;
+    display: flex;
+
+}
+
+
+.arrow {
+    height: 18px;
+    width: 18px;
+    padding: 14px;
+}
+
+
+
+.EntirePlaylists {
+
+    height: calc(100vh - 180px);
+
+
+
+
+
+    position: relative;
+
+
+}
+
+
+.spotifyPlaylist {
+    padding: 10px;
+
+}
+
+h1 {
+    font-size: 30px;
+}
+
+.radio-container {
+    width: clamp(160px, 35vw, 300px);
+    aspect-ratio: 1;
+    margin: 20px auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transform-origin: center;
+}
+
+.radio-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* ROTATE RADIO */
+.radio-svg.playing {
+    animation: radioRotate 4s linear infinite;
+}
+
+
+@keyframes radioRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+.Player {
+    position: absolute;
+    bottom: 0px;
+    background-color: rgb(234, 234, 234);
+
+    left: 0;
+    width: 100%;
+    min-height: 90px;
+    box-sizing: border-box;
+
+    box-shadow: 4px 4px 10px 0.5px rgb(125, 123, 123);
+
+    padding: 12px;
+    border-radius: 22px;
+    z-index: 3;
+
+
+}
+
+.Player:hover {
+    cursor: pointer;
+
+}
+
+
+.Player .startbutton {
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgb(219, 214, 214);
+    padding: 10px;
+    gap: 20px;
+
+    border-radius: 12px;
+
+}
+
+.allbtn {
+    display: flex;
+    gap: 20px;
+}
+
+
+
+
+.songlist ul {
+    padding: 10px;
+    width: 350px;
+    position: relative;
+
+}
+
+.songlist ul li {
+    gap: 5px;
+    display: flex;
+    cursor: pointer;
+    padding: 5px;
+    border: 0.5px solid white;
+    margin: 12px 0;
+    border-radius: 12px;
+    justify-content: space-between;
+    max-width: 280px;
+}
+
+.playbar {
+    display: flex;
+    font-size: 1rem;
+
+}
+
+.musicplayicon {
+    background-color: #1fdf64;
+    padding: 6px;
+    border-radius: 45px;
+    box-shadow: 0.6px 0.5px 7px 0.5px rgb(125, 123, 123);
+}
+
+.songlist .info {
+    font-size: 13px;
+    width: 330px;
+}
+
+.songlist {
+    /* flex =1  means songlist takes all the remaining space . i.e, when home above div and library taked the space already then remaining space given to songlist that contain songs */
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+
+}
+
+.seekbar {
+    height: 4px;
+    width: 98%;
+    background-color: rgb(27, 10, 10);
+    position: absolute;
+
+    bottom: 5px;
+    left: 1%;
+    margin: 0;
+    border-radius: 10px;
+
+
+}
+
+.circle {
+    width: 13px;
+    height: 13px;
+    border-radius: 13px;
+    background-color: rgb(238, 10, 10);
+    position: relative;
+    bottom: 4px;
+    left: 0%;
+}
+
+
+
+
+
+
+.songinfo {
+
+
+    display: flex;
+    justify-content: space-around;
+    font-size: 11px;
+    min-width: 0;
+    overflow: hidden;
+    position: absolute;
+    left: 10px;
+    bottom: 15px;
+    box-shadow: 3px 6px 9px 3px rgb(52, 50, 50);
+    overflow-x: auto;
+}
+
+.navbar {
+    width: 180px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.hamburger {
+    display: none;
+    width: 35px;
+    height: 35px;
+
+}
+
+.close {
+    display: none;
+}
+
+.volume {
+    width: 100px;
+    position: absolute;
+    right: 6px;
+    bottom: 10px;
+
+
+
+
+}
+
+.range {
+    display: flex;
+    align-items: center;
+
+    padding: 2px;
+    gap: 5px;
+
+}
+
+.range img {
+
+    position: relative;
+    z-index: 5;
+    width: 20px;
+}
+
+.volume:hover {
+    cursor: pointer;
+}
+
+.range input {
+
+
+    z-index: 4;
+    width: 74px;
+    position: relative;
+}
+
+
+
+
+/* making responsive  using media queries */
+@media (max-width: 1200px) {
+    .left {
+
+        position: absolute;
+
+        /* left -120%  means that left class page shifts to left side -120% means it become hidden */
+        left: -120%;
+        z-index: 1;
+        width: 30vw;
+
+        background-color: black;
+        transition: left 0.3s ease-out;
+        overflow-y: auto;
+
+    }
+
+
+
+    .right {
+        width: 100%;
+    }
+
+    .Player {
+        width: 100vw;
+    }
+
+
+
+    .hamburger {
+        display: block;
+    }
+
+    .left .close {
+        position: absolute;
+        left: 230px;
+        display: block;
+        top: 7px;
+        cursor: pointer;
+        z-index: 10;
+
+    }
+
+
+}
+
+
+
+@media (max-width: 700px) {
+
+    /* means when width : 700 or less then height of entire playlist become 100vh an leave 130px for player below  */
+
+
+
+
+}
+
+
+/* TABLET */
+@media (max-width: 900px) {
+
+
+
+    /* to make this left side adjustable as per the responsiveness of webpage when width:900px */
+
+    .left {
+        width: 320px;
+        max-width: 85vw;
+    }
+
+    .radio-container {
+        width: min(45vw, 260px);
+        height: min(45vw, 260px);
+    }
+
+}
+
+
+/* MOBILE */
+@media (max-width: 600px) {
+
+    /* to make this left side adjustable as per the responsiveness of webpage when width:600px */
+    .left {
+        width: 280px;
+        max-width: 85vw;
+    }
+
+    .radio-container {
+        width: min(60vw, 220px);
+        height: min(60vw, 220px);
+    }
+
+
+
+
+}
+
+/* SMALL MOBILE */
+@media (max-width: 400px) {
+
+    .songinfo {
+        font-size: 10px;
+    }
+
+
+    .card {
+        width: 10px;
+
+    }
+
+
+
+    .startbutton {
+        gap: 10px;
+        height: 60px;
+    }
+
+
+    .radio-container {
+        width: 180px;
+        height: 180px;
+    }
+
+
+
+
+}
