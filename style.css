@@ -15,7 +15,11 @@ body {
 
 .container {
     width: 100%;
-    height: 100vh;
+
+
+
+    /* mobile phones mein dvh helps taki browser mein upar ya neeche search bars se player div overlap na ho esliye dvh helps */
+    height: 100dvh;
 
     display: flex;
 
@@ -69,7 +73,8 @@ body {
     display: flex;
     flex-direction: column;
 
-    height: 100vh;
+    /* mobile ke according available space mein left side hight adjust karna like mobile browser ke bars ki wajah se player overlap problem solved  */
+    height: 100dvh;
     box-sizing: border-box;
 
 }
@@ -77,9 +82,12 @@ body {
 .right {
 
     width: 100%;
-    height: 100vh;
+
+    /*100dvh browser bar ke visible hone/hidden hone ke according available height adjust karta hai. */
+    height: 100dvh;
     min-width: 0;
     overflow-y: auto;
+    overflow-x: hidden;
 
 
     /* position relative and all these transition  properties used to make ambient background appear when song clicks next play or back button  */
@@ -133,11 +141,9 @@ body {
 
 .EntirePlaylists {
 
-    height: calc(100vh - 180px);
 
-
-
-
+    /*  */
+    height: calc(100dvh - 180px);
 
     position: relative;
 
@@ -489,6 +495,11 @@ h1 {
 
     }
 
+
+    /* IN MOBILE TO AVOID CHROME SEARCH BAR FROM DOWN SIDE , hamne Player div ko bottom padding dedi hai */
+    .Player {
+        padding-bottom: calc(12px + env(safe-area-inset-bottom));
+    }
 
 
 
