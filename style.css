@@ -59,18 +59,18 @@ body {
 
 
 
-    /* all these width , max width and other things below setted to make website responsiveve to mobile , laptop tablet etc  */
+    /* all these width, max-width and other things are given to make this left side  responsive */
 
     width: 25vw;
     min-width: 250px;
     max-width: 400px;
+
 
     display: flex;
     flex-direction: column;
 
     height: 100vh;
     box-sizing: border-box;
-
 
 }
 
@@ -103,7 +103,7 @@ body {
 
 .library {
 
-
+    flex: 1;
 
     min-height: 0;
 
@@ -151,6 +151,7 @@ body {
 
 h1 {
     font-size: 30px;
+    padding-left: 20px;
 }
 
 .radio-container {
@@ -238,8 +239,9 @@ h1 {
 
 
 .songlist ul {
+    margin: 0;
     padding: 10px;
-    width: 350px;
+    width: auto;
     position: relative;
 
 }
@@ -253,7 +255,8 @@ h1 {
     margin: 12px 0;
     border-radius: 12px;
     justify-content: space-between;
-    max-width: 280px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .playbar {
@@ -270,7 +273,11 @@ h1 {
 }
 
 .songlist .info {
+
+    flex: 1;
     font-size: 13px;
+    min-width: 0;
+    overflow: hidden;
     width: 330px;
 }
 
@@ -279,6 +286,11 @@ h1 {
     flex: 1;
     min-height: 0;
     overflow-y: auto;
+
+
+    /* jab mobile mein open karengey tab padding-bottom ki help se songlist ke sare songs visible honge warna pehle sonlist pe last wale song Player div mein hide ho ja rhe thee that's why it added */
+
+    overflow-x: hidden;
 
 }
 
@@ -305,10 +317,6 @@ h1 {
     bottom: 4px;
     left: 0%;
 }
-
-
-
-
 
 
 .songinfo {
@@ -384,8 +392,6 @@ h1 {
 }
 
 
-
-
 /* making responsive  using media queries */
 @media (max-width: 1200px) {
     .left {
@@ -403,15 +409,11 @@ h1 {
 
     }
 
-
-
     .right {
         width: 100%;
     }
 
-    .Player {
-        width: 100vw;
-    }
+
 
 
 
@@ -429,23 +431,20 @@ h1 {
 
     }
 
+    .songlist {
+        padding-bottom: 100px;
 
-}
-
-
-
-@media (max-width: 700px) {
-
-    /* means when width : 700 or less then height of entire playlist become 100vh an leave 130px for player below  */
-
-
+    }
 
 
 }
+
+
 
 
 /* TABLET */
 @media (max-width: 900px) {
+
 
 
 
@@ -459,6 +458,11 @@ h1 {
     .radio-container {
         width: min(45vw, 260px);
         height: min(45vw, 260px);
+    }
+
+    .songlist {
+        padding-bottom: 100px;
+
     }
 
 }
@@ -476,6 +480,12 @@ h1 {
     .radio-container {
         width: min(60vw, 220px);
         height: min(60vw, 220px);
+    }
+
+
+    .songlist {
+        padding-bottom: 100px;
+
     }
 
 
@@ -509,6 +519,11 @@ h1 {
         height: 180px;
     }
 
+
+    .songlist {
+        padding-bottom: 100px;
+
+    }
 
 
 

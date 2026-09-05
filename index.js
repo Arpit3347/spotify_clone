@@ -1,3 +1,6 @@
+console.log("JS FILE CONNECTED");
+
+
 let currentSong = new Audio();
 // currentSong act a music player
 
@@ -6,10 +9,9 @@ let currentSong = new Audio();
 async function getSongs() {
 
 
-// here we first make fetch the all songs from their songs folder but then to make it dynamic album we take a parameter folder in getSongs() 
-
+// here we fetch all songs from their folder named as songs 
     let a = await fetch(
-        'http://127.0.0.1:5501/PROJECTS/Spotify%20FrontEnd/songs/'
+        "./songs/"
     );
 
     let response = await a.text();
@@ -40,19 +42,6 @@ async function main() {
     let songs = await getSongs();
 
 
-
-
-
-    // declare  radio svg 
-const radioSongImage = document.querySelector("#radioSongImage");
-const radioSvg = document.querySelector(".radio-svg");
-
-
-
-
-  
-
-
     // Convert URLs into song names
     let songNames = songs.map((e) => {
 
@@ -62,6 +51,8 @@ const radioSvg = document.querySelector(".radio-svg");
 
     });
 
+
+  
 
     // Get <ul>
     let songUl = document
@@ -115,6 +106,11 @@ let currentIndex = 0;
     let ambientBg = document.querySelector(".ambient-bg");
 
 
+    // Selecting Radio svg
+    let radioSvg = document.querySelector(".radio-svg");
+
+
+
 
 // function for the ambient background image 
 function changeBackground() {
@@ -127,52 +123,7 @@ function changeBackground() {
         `url("backgrounds/${fileName}.jpg")`;
 
     ambientBg.style.opacity = "0.8";
-
-
 }
-
-// ======================================================
-//       CHANGE IMAGE INSIDE RADIO SVG
-// ======================================================
-
-function changeRadioImage() {
-
-    // Get current song name
-    //
-    // Example:
-    // songs/Faded.mp3
-    //
-    // becomes:
-    // Faded
-
-    let fileName = decodeURIComponent(
-        songs[currentIndex].split("/").pop().replace(".mp3", "")
-    );
-
-
-    // Create image path
-    //
-    // Faded
-    //   ↓
-    // backgrounds/Faded.jpg
-    //
-    // If your radio images are in another folder,
-    // change "backgrounds" to that folder name.
-
-    let imageUrl = `backgrounds/${fileName}.jpg`;
-
-
-    // Put this image inside the CENTER of the SVG
-
-    
-radioSongImage.setAttributeNS(
-    "http://www.w3.org/1999/xlink",
-    "href",
-    imageUrl
-);
-
-}
-
 
 
 
@@ -180,42 +131,31 @@ radioSongImage.setAttributeNS(
 // selecting songinfo that contain songname on Player
 let songInfo = document.querySelector(".actualname");
 
-
     // Make every song clickable
     songList.forEach((li,index)=>{
-        
-   li.addEventListener("click",()=>{ 
+        li.addEventListener("click",()=>{
+             
+            currentIndex = index;
 
-    // Get clicked song index
-    currentIndex = index;
-
-    console.log("clicked:", songNames[currentIndex]);
-
-
-    // Play clicked song
-    currentSong.src = songs[currentIndex];
-    currentSong.play();
+            currentSong.src= songs[currentIndex];
+            currentSong.play();
 
 
-    // Show song name in playbar
-    songInfo.innerHTML = songNames[currentIndex] + ".mp3";
+            
+// ROTATE Radio
+radioSvg.classList.add("playing");
 
 
-    // Change background
-    changeBackground();
+            // putting currentsong name on songinfo div
+            songInfo.innerHTML = songNames[currentIndex] +".mp3";
+
+            changeBackground();
 
 
-    // ⭐ NEW
-    // Change image in center of radio
-    changeRadioImage();
+            // right side color changes to ambient background from background folder
+            document.querySelector(".right").classList.add("ambient-active");
 
-
-    // Show ambient background
-    document.querySelector(".right").classList.add("ambient-active");
-
-});
-
-
+        });
     })
 
   
@@ -228,6 +168,9 @@ playbutton.addEventListener("click",()=>{
            currentSong.play();
            playbutton.src = "pause.svg"
 
+//Rotate Radio 
+radioSvg.classList.add("playing");
+
 
         //    making ambient background visible when play clicks
            changeBackground();
@@ -237,6 +180,8 @@ playbutton.addEventListener("click",()=>{
         currentSong.pause();
         playbutton.src = "music.svg"
 
+        // STOP RADIO ROTATION
+            radioSvg.classList.remove("playing");
 
 
         // when play button is paused then ambient background will not be visible
@@ -253,76 +198,71 @@ playbutton.addEventListener("click",()=>{
 
 
 
-// next button working
+
+
+
+// next button working 
 let nextButton = document.querySelector(".nextmusic");
 
 nextButton.addEventListener("click",()=>{
+  currentIndex++;
 
-    currentIndex++;
+   if(currentIndex>=songs.length){
+    currentIndex=0;
+   }
 
-    if(currentIndex >= songs.length){
-        currentIndex = 0;
-    }
-
-
-    // Play next song
     currentSong.src = songs[currentIndex];
     currentSong.play();
 
 
-    // Change song name
-    songInfo.innerHTML = songNames[currentIndex] + ".mp3";
+     // ROTATE RADIO
+        radioSvg.classList.add("playing");
 
 
-    // Change background
+    songInfo.innerHTML = songNames[currentIndex] +".mp3";
+   
+
+    // ambient background function calls when next button clicked
     changeBackground();
 
 
-    // ⭐ Change radio image
-    changeRadioImage();
 
-
-    // Show ambient background
+ // right side color changes to ambient background from background folder
     document.querySelector(".right").classList.add("ambient-active");
 
-});
+})
 
 
 
-// back button working
+// back button working 
 let previousButton = document.querySelector(".backmusic");
 
 previousButton.addEventListener("click", ()=>{
-
     currentIndex--;
-
-    if(currentIndex < 0){
+     
+    if(currentIndex<0){
         currentIndex = songs.length - 1;
     }
-
-
-    // Play previous song
     currentSong.src = songs[currentIndex];
     currentSong.play();
 
 
-    // Change song name
-    songInfo.innerHTML = songNames[currentIndex] + ".mp3";
+     // ROTATE RADIO
+        radioSvg.classList.add("playing");
 
 
-    // Change background
+    songInfo.innerHTML = songNames[currentIndex] +".mp3";
+
+
+    // ambient background calls when previous button clicked
     changeBackground();
 
 
-    // ⭐ Change radio image
-    changeRadioImage();
-
-
-    // Show ambient background
+ // right side color changes to ambient background from background folder
     document.querySelector(".right").classList.add("ambient-active");
 
-});
 
+})
 
 
 
@@ -381,6 +321,8 @@ hamburger.addEventListener("click", ()=>{
        document.querySelector(".left").style.left = "-120%";
 })
 
+}
+
 
 // range div appers when volume button clicked
 
@@ -400,47 +342,6 @@ document.querySelector(".range input").addEventListener("input", (e) => {
 
 });
 
-
-
-
-
-
-
-// ======================================================
-//          RADIO ROTATES WHEN SONG PLAYS
-// ======================================================
-
-currentSong.addEventListener("play", () => {
-
-    // Add CSS class
-    //b
-    // CSS will start the rotation
-
-    console.log("Play Event Fired");
-
-    radioSvg.classList.add("playing");
-    console.log(radioSvg.classList);
-
-});
-
-// ======================================================
-//          RADIO STOPS WHEN SONG PAUSES
-// ======================================================
-
-currentSong.addEventListener("pause", () => {
-
-    // Remove CSS class
-    //
-    // CSS rotation stops
-
-    radioSvg.classList.remove("playing");
-
-});
-
-
-
-
-}
 
 
 
@@ -481,18 +382,5 @@ main();
       index - 1    play/pause    index + 1    */ 
 
 
-    //    then we add close button working , hamburger working ,making responsiveess , making seekbar ,circle working add volume button working , making ambient background working 
-
-
-    // radio button working : - 
-//     click song
-//    ↓
-// currentIndex changes
-//    ↓
-// background changes
-//    ↓
-// radio center image changes
-//    ↓
-// song plays
-//    ↓
-// radio rotates
+    //    then we add close button working , hamburger working ,making responsiveess , making seekbar ,circle working add volume button working , making ambient background working and then add a radio svg that rotates , radio.svg taken from chatgpt and also it's html code taken from chatgpt 
+    
