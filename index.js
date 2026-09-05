@@ -1,4 +1,5 @@
-console.log("JS FILE CONNECTED");
+// NOTE:= ye js file  mein pehle fetch karna songs url se then agey kaam karna 
+// fetching song from url ,  deployment mein working  nhi hai esliye meneh (song.js) ek js file banayi jo songs ko ARRAY[] se attach karke kam kiya hai  , Let songs =[] ki help se deployment possible hai , fetch method deployment mein not working hai 
 
 
 let currentSong = new Audio();

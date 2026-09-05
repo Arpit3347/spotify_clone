@@ -79,7 +79,8 @@ body {
     width: 100%;
     height: 100vh;
     min-width: 0;
-    overflow: hidden;
+    overflow-y: auto;
+
 
     /* position relative and all these transition  properties used to make ambient background appear when song clicks next play or back button  */
     position: relative;
